@@ -1,7 +1,7 @@
-#>> monty
+#   monty
 
 ## The Monty Language
-	is a scripting language that is first compiled into Monty byte codes.
+is a scripting language that is first compiled into Monty byte codes.
 It relies on a unique stack, with specific instructions to manipulate it.
 The project is an interpreter for Monty ByteCodes files.
 
@@ -16,4 +16,4 @@ The project is an interpreter for Monty ByteCodes files.
 * Usage: `monty file`
  - where `file` is the path of the file containing Monty ByteCode
 
-# >>>>>to be continued...
+######to be continued...
