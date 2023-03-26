@@ -15,5 +15,3 @@ The project is an interpreter for Monty ByteCodes files.
 ### The monty program
 * Usage: `monty file`
  - where `file` is the path of the file containing Monty ByteCode
-
-######to be continued...
