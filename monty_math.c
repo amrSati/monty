@@ -41,5 +41,33 @@ void sub(stack_t **stack, unsigned int line_number)
 	}
 
 	fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+	free_driver();
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * _div - divides the second top element by the top element of the stack
+ * @stack: ...
+ * @line_number: ...
+ *
+ * Return: ...
+ */
+void _div(stack_t **stack, unsigned int line_number)
+{
+	if (*stack && (*stack)->next)
+	{
+		if (!(*stack)->n)
+		{
+			fprintf(stderr, "L%d: division by zero\n", line_number);
+			free_driver();
+			exit(EXIT_FAILURE);
+		}
+
+		math_op(stack, 3);
+		return;
+	}
+
+	fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+	free_driver();
 	exit(EXIT_FAILURE);
 }

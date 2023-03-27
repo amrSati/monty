@@ -111,6 +111,7 @@ void nop(stack_t **, unsigned int);
 
 void add(stack_t **, unsigned int);
 void sub(stack_t **, unsigned int);
+void _div(stack_t **, unsigned int);
 
 
 /* stack functions */
