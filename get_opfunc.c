@@ -12,6 +12,7 @@ opfunc get_opfunc(char *opcode)
 	instruction_t ops[] = {
 		{"push", _push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 

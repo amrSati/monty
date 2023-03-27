@@ -1,6 +1,7 @@
 #ifndef __MONTY_H__
 #define __MONTY_H__
 
+
 /* Include */
 #include <stdio.h>
 #include <stdlib.h>
@@ -70,6 +71,7 @@ struct global_var
 
 extern struct global_var *driver;
 
+
 /* Functions Prototypes */
 
 /* util functions */
@@ -83,6 +85,7 @@ void push_usage_err(unsigned int);
 /* opcodes functions */
 void _push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
+void pint(stack_t **, unsigned int);
 
 
 /* stack functions */
