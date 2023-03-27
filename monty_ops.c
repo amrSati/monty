@@ -34,16 +34,13 @@ void _push(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-	int n;
+	stack_t *tmp = *stack;
 
 	UNUSED(line_number);
 
-	if (!stack)
+	if (!tmp)
 		return;
 
-	while (*stack)
-	{
-		n = pop(stack);
-		fprintf(stdout, "%d\n", n);
-	}
+	fprintf(stdout, "%d\n", tmp->n);
+	pall(&(tmp->next), line_number);
 }
