@@ -103,10 +103,10 @@ void div_err(unsigned int);
 void _push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
 void pint(stack_t **, unsigned int);
-/* code in stack_ops.c */
 void pop(stack_t **, unsigned int);
 void swap(stack_t **, unsigned int);
 void nop(stack_t **, unsigned int);
+void pchar(stack_t **, unsigned int);
 
 
 /* math opcodes functions */

@@ -21,6 +21,7 @@ opfunc get_opfunc(char *opcode)
 		{"div", _div},
 		{"mul", mul},
 		{"mod", mod},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 
