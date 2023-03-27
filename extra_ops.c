@@ -65,7 +65,12 @@ void pstr(stack_t **stack, unsigned int line_number)
 	memset(string, 0, size);
 
 	for (; tmp && tmp->n; tmp = tmp->next, i++)
+	{
+		if (tmp->n < 1 || tmp->n > 127)
+			break;
+
 		string[i] = tmp->n;
+	}
 
 	fprintf(stdout, "%s\n", string);
 	free(string);
