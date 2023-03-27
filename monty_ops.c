@@ -9,10 +9,13 @@
  */
 void _push(stack_t **stack, unsigned int line_number)
 {
-	int n, i;
+	int n, i = 0;
 
 	if (!driver->arg)
 		push_usage_err(line_number);
+
+	if (driver->arg[0] == '-')
+		i++;
 
 	for (i = 0; driver->arg[i]; i++)
 		if (!isdigit(driver->arg[i]))
