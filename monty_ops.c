@@ -27,10 +27,10 @@ void _push(stack_t **stack, unsigned int line_number)
 
 /**
  * pall - prints all elements of stack to stdout
- * @stack: head of stack
- * @line_number: line number in bytecode file
+ * @stack: ...
+ * @line_number: ...
  *
- * Return: non
+ * Return: ...
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
@@ -47,10 +47,10 @@ void pall(stack_t **stack, unsigned int line_number)
 
 /**
  * pint - prints the value at the top of the stack
- * @stack: head of stack
- * @line_number: line number in bytecode file
+ * @stack: ...
+ * @line_number: ...
  *
- * Return: non
+ * Return: ...
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
@@ -65,10 +65,10 @@ void pint(stack_t **stack, unsigned int line_number)
 
 /**
  * _pop - removes the top element of the stack
- * @stack: head of stack
- * @line_number: line number in bytecode file
+ * @stack: ...
+ * @line_number: ...
  *
- * Return: non
+ * Return: ...
  */
 void _pop(stack_t **stack, unsigned int line_number)
 {
@@ -88,4 +88,36 @@ void _pop(stack_t **stack, unsigned int line_number)
 
 	free(tmp);
 	tmp = NULL;
+}
+
+/**
+ * swap - swaps the top two elements of the stack
+ * @stack: ...
+ * @line_number: ...
+ *
+ * Return: ...
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *first, *second;
+
+	if (*stack && (*stack)->next)
+	{
+		first = *stack;
+		second = (*stack)->next;
+
+		if (second->next)
+			second->next->prev = first;
+
+		first->next = second->next;
+		second->next = first;
+		first->prev = second;
+		second->prev = NULL;
+		*stack = second;
+		return;
+	}
+
+	fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+	free_driver();
+	exit(EXIT_FAILURE);
 }
