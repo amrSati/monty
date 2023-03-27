@@ -26,3 +26,19 @@ void div_err(unsigned int line_number)
 	free_driver();
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * getsize - returns size of stack
+ * @size: pointer to save the size in
+ *
+ * Return: size of stack
+ */
+size_t getsize(size_t *size)
+{
+	stack_t *tmp = driver->head;
+
+	for (; tmp && tmp->n; tmp = tmp->next)
+		(*size)++;
+
+	return (*size);
+}

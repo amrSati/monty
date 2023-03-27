@@ -96,6 +96,7 @@ void push_usage_err(unsigned int);
 void math_op(stack_t **, unsigned int);
 void math_err(const char *, unsigned int);
 void div_err(unsigned int);
+size_t getsize(size_t *);
 
 
 /* opcodes functions */
@@ -107,6 +108,7 @@ void pop(stack_t **, unsigned int);
 void swap(stack_t **, unsigned int);
 void nop(stack_t **, unsigned int);
 void pchar(stack_t **, unsigned int);
+void pstr(stack_t **, unsigned int);
 
 
 /* math opcodes functions */
