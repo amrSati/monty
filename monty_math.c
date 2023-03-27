@@ -14,16 +14,9 @@
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
-
 	if (*stack && (*stack)->next)
 	{
-		tmp = *stack;
-		tmp->next->n += tmp->n;
-		tmp->next->prev = NULL;
-		*stack = (*stack)->next;
-		free(tmp);
-		tmp = NULL;
+		math_op(stack, 1);
 		return;
 	}
 
@@ -33,14 +26,20 @@ void add(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * nop - doesn't do anything
+ * sub - subtracts th top element from the second of the stack
  * @stack: ...
  * @line_number: ...
  *
- * Return: non
+ * Return: ...
  */
-void nop(stack_t **stack, unsigned int line_number)
+void sub(stack_t **stack, unsigned int line_number)
 {
-	UNUSED(stack);
-	UNUSED(line_number);
+	if (*stack && (*stack)->next)
+	{
+		math_op(stack, 2);
+		return;
+	}
+
+	fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+	exit(EXIT_FAILURE);
 }

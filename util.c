@@ -65,3 +65,29 @@ void push_usage_err(unsigned int line_number)
 	fprintf(stderr, "L%d: usage: push integer\n", line_number);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * math_op - does the math operation based on the given flag
+ * @stack: head of stack
+ * @op: flag to choose the correct operator
+ *
+ * Return: non
+ */
+void math_op(stack_t **stack, unsigned int op)
+{
+	switch (op)
+	{
+		case 1:
+			(*stack)->next->n += (*stack)->n;
+			break;
+		case 2:
+			(*stack)->next->n -= (*stack)->n;
+			break;
+		default:
+			break;
+	}
+
+	*stack = (*stack)->next;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
+}

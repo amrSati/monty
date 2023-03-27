@@ -3,6 +3,7 @@
 
 
 /* Include */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -11,10 +12,12 @@
 #include <ctype.h>
 #include <string.h>
 
+
 #define UNUSED(X) ((void) X)
 
 
 /* Data Structures */
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -24,6 +27,7 @@
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO
  */
+
 typedef struct stack_s
 {
 	int n;
@@ -31,8 +35,11 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+
 /* function pointer naming */
+
 typedef void (*opfunc)(stack_t **, unsigned int);
+
 
 /**
  * struct instruction_s - opcode and its function
@@ -42,13 +49,16 @@ typedef void (*opfunc)(stack_t **, unsigned int);
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
  */
+
 typedef struct instruction_s
 {
 	char *opcode;
 	opfunc operation;
 } instruction_t;
 
+
 /* Global */
+
 /**
  * struct global_var - main variable for interpreting
  * @bc_file: bytecode file pointer
@@ -60,6 +70,7 @@ typedef struct instruction_s
  * Description: global variable to handle file interpreting
  * for stack, queue, FIFO, LIFO
  */
+
 struct global_var
 {
 	FILE *bc_file;
@@ -74,27 +85,37 @@ extern struct global_var *driver;
 
 /* Functions Prototypes */
 
+
 /* util functions */
+
 FILE *check_usage(FILE **, int, char **);
 opfunc get_opfunc(char *);
 void driver_init(FILE *);
 void free_driver(void);
 void push_usage_err(unsigned int);
+void math_op(stack_t **, unsigned int);
 
 
 /* opcodes functions */
+
 void _push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
 void pint(stack_t **, unsigned int);
-void _pop(stack_t **, unsigned int);
+/* code in stack_ops.c */
+void pop(stack_t **, unsigned int);
 void swap(stack_t **, unsigned int);
-void add(stack_t **, unsigned int);
 void nop(stack_t **, unsigned int);
 
 
+/* math opcodes functions */
+
+void add(stack_t **, unsigned int);
+void sub(stack_t **, unsigned int);
+
+
 /* stack functions */
+
 stack_t *push(stack_t **, int);
-int pop(stack_t **);
 void free_stack(stack_t *);
 
 

@@ -30,26 +30,30 @@ stack_t *push(stack_t **top, int el)
 }
 
 /**
- * pop - pops an element from top
- * @top: top of the stack
+ * pop - removes the element at the top of the stack
+ * @stack: head of stack
+ * @line_number: line number in bytecode file
  *
- * Return: the data in the node (-101 on failure)
+ * Return: non
  */
-int pop(stack_t **top)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
-	int n;
 
-	tmp = *top;
-	*top = (*top)->next;
-	n = tmp->n;
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_driver();
+		exit(EXIT_FAILURE);
+	}
+
+	tmp = *stack;
+	*stack = (*stack)->next;
+	if (*stack)
+		(*stack)->prev = NULL;
+
 	free(tmp);
 	tmp = NULL;
-
-	if (*top)
-		(*top)->prev = NULL;
-
-	return (n);
 }
 
 /**

@@ -64,33 +64,6 @@ void pint(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * _pop - removes the top element of the stack
- * @stack: ...
- * @line_number: ...
- *
- * Return: ...
- */
-void _pop(stack_t **stack, unsigned int line_number)
-{
-	stack_t *tmp;
-
-	if (!(*stack))
-	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		free_driver();
-		exit(EXIT_FAILURE);
-	}
-
-	tmp = *stack;
-	*stack = (*stack)->next;
-	if (*stack)
-		(*stack)->prev = NULL;
-
-	free(tmp);
-	tmp = NULL;
-}
-
-/**
  * swap - swaps the top two elements of the stack
  * @stack: ...
  * @line_number: ...
@@ -120,4 +93,17 @@ void swap(stack_t **stack, unsigned int line_number)
 	fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 	free_driver();
 	exit(EXIT_FAILURE);
+}
+
+/**
+ * nop - doesn't do anything
+ * @stack: ...
+ * @line_number: ...
+ *
+ * Return: non
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	UNUSED(stack);
+	UNUSED(line_number);
 }
