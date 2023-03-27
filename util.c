@@ -86,6 +86,8 @@ void math_op(stack_t **stack, unsigned int op)
 		case 3:
 			(*stack)->next->n /= (*stack)->n;
 			break;
+		case 4:
+			(*stack)->next->n *= (*stack)->n;
 		default:
 			break;
 	}

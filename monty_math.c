@@ -71,3 +71,23 @@ void _div(stack_t **stack, unsigned int line_number)
 	free_driver();
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * mul - multiplies the second top element with the top of the stack
+ * @stack: ...
+ * @line_number: ...
+ *
+ * Return: ...
+ */
+void mul(stack_t **stack, unsigned int line_number)
+{
+	if (*stack && (*stack)->next)
+	{
+		math_op(stack, 4);
+		return;
+	}
+
+	fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+	free_driver();
+	exit(EXIT_FAILURE);
+}

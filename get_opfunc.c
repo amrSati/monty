@@ -19,6 +19,7 @@ opfunc get_opfunc(char *opcode)
 		{"nop", nop},
 		{"sub", sub},
 		{"div", _div},
+		{"mul", mul},
 		{NULL, NULL}
 	};
 
