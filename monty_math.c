@@ -20,9 +20,7 @@ void add(stack_t **stack, unsigned int line_number)
 		return;
 	}
 
-	fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-	free_driver();
-	exit(EXIT_FAILURE);
+	math_err("add", line_number);
 }
 
 /**
@@ -40,9 +38,7 @@ void sub(stack_t **stack, unsigned int line_number)
 		return;
 	}
 
-	fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
-	free_driver();
-	exit(EXIT_FAILURE);
+	math_err("sub", line_number);
 }
 
 /**
@@ -57,19 +53,13 @@ void _div(stack_t **stack, unsigned int line_number)
 	if (*stack && (*stack)->next)
 	{
 		if (!(*stack)->n)
-		{
-			fprintf(stderr, "L%d: division by zero\n", line_number);
-			free_driver();
-			exit(EXIT_FAILURE);
-		}
+			div_err(line_number);
 
 		math_op(stack, 3);
 		return;
 	}
 
-	fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-	free_driver();
-	exit(EXIT_FAILURE);
+	math_err("div", line_number);
 }
 
 /**
@@ -87,7 +77,26 @@ void mul(stack_t **stack, unsigned int line_number)
 		return;
 	}
 
-	fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
-	free_driver();
-	exit(EXIT_FAILURE);
+	math_err("mul", line_number);
+}
+
+/**
+ * mod - computes the rest of the division of the second top element by the top
+ * @stack: ...
+ * @line_number: ...
+ *
+ * Return: ...
+ */
+void mod(stack_t **stack, unsigned int line_number)
+{
+	if (*stack && (*stack)->next)
+	{
+		if (!(*stack)->n)
+			div_err(line_number);
+
+		math_op(stack, 5);
+		return;
+	}
+
+	math_err("mod", line_number);
 }

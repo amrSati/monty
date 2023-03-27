@@ -94,6 +94,8 @@ void driver_init(FILE *);
 void free_driver(void);
 void push_usage_err(unsigned int);
 void math_op(stack_t **, unsigned int);
+void math_err(const char *, unsigned int);
+void div_err(unsigned int);
 
 
 /* opcodes functions */
@@ -113,7 +115,7 @@ void add(stack_t **, unsigned int);
 void sub(stack_t **, unsigned int);
 void _div(stack_t **, unsigned int);
 void mul(stack_t **, unsigned int);
-
+void mod(stack_t **, unsigned int);
 
 /* stack functions */
 
