@@ -31,3 +31,16 @@ void add(stack_t **stack, unsigned int line_number)
 	free_driver();
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * nop - doesn't do anything
+ * @stack: ...
+ * @line_number: ...
+ *
+ * Return: non
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	UNUSED(stack);
+	UNUSED(line_number);
+}
