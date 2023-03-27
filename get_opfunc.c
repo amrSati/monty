@@ -13,6 +13,7 @@ opfunc get_opfunc(char *opcode)
 		{"push", _push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", _pop},
 		{NULL, NULL}
 	};
 

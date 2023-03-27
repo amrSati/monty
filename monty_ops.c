@@ -62,3 +62,30 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	fprintf(stdout, "%d\n", (*stack)->n);
 }
+
+/**
+ * _pop - removes the top element of the stack
+ * @stack: head of stack
+ * @line_number: line number in bytecode file
+ *
+ * Return: non
+ */
+void _pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_driver();
+		exit(EXIT_FAILURE);
+	}
+
+	tmp = *stack;
+	*stack = (*stack)->next;
+	if (*stack)
+		(*stack)->prev = NULL;
+
+	free(tmp);
+	tmp = NULL;
+}

@@ -86,6 +86,7 @@ void push_usage_err(unsigned int);
 void _push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
 void pint(stack_t **, unsigned int);
+void _pop(stack_t **, unsigned int);
 
 
 /* stack functions */
