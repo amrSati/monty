@@ -75,3 +75,39 @@ void pstr(stack_t **stack, unsigned int line_number)
 	fprintf(stdout, "%s\n", string);
 	free(string);
 }
+
+/**
+ * rotl - rotates the stack to the top
+ * @stack: ...
+ * @line_number: ...
+ *
+ * Description: The top element of the stack becomes the last one,
+ *	and the second top element becomes the top of stack.
+ *	rotl never fails.
+ *
+ * Return: ...
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top, *last;
+
+	UNUSED(line_number);
+
+	if (!(*stack))
+		return;
+
+	top = *stack;
+	last = (*stack)->next;
+	while (last && last->next)
+		last = last->next;
+
+	if (!last)
+		return;
+
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+
+	top->next = NULL;
+	top->prev = last;
+	last->next = top;
+}
