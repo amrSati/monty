@@ -110,6 +110,7 @@ void nop(stack_t **, unsigned int);
 void pchar(stack_t **, unsigned int);
 void pstr(stack_t **, unsigned int);
 void rotl(stack_t **, unsigned int);
+void rotr(stack_t **, unsigned int);
 
 
 /* math opcodes functions */

@@ -24,6 +24,7 @@ opfunc get_opfunc(char *opcode)
 		{"pchar", pchar},
 		{"pstr", pstr},
 		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 

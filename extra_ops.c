@@ -111,3 +111,37 @@ void rotl(stack_t **stack, unsigned int line_number)
 	top->prev = last;
 	last->next = top;
 }
+
+/**
+ * rotr - rotates the stack to the bottom
+ * @stack: ...
+ * @line_number: ...
+ *
+ * Description: The last element of the stack becomes
+ * the top element of the stack
+ *
+ * Return: ...
+ */
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top, *bottom;
+
+	UNUSED(line_number);
+
+	if (!(*stack))
+		return;
+
+	top = *stack;
+	bottom = (*stack)->next;
+	while (bottom && bottom->next)
+		bottom = bottom->next;
+
+	if (!bottom)
+		return;
+
+	bottom->next = top;
+	top->prev = bottom;
+	bottom->prev->next = NULL;
+	bottom->prev = NULL;
+	*stack = bottom;
+}
