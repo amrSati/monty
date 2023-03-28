@@ -36,6 +36,7 @@ void driver_init(FILE *bc_file)
 
 	driver->bc_file = bc_file;
 	driver->line_number = 1;
+	driver->islifo = 1;
 	driver->head = NULL;
 	driver->arg = NULL;
 	driver->line = NULL;
@@ -52,18 +53,6 @@ void free_driver(void)
 	free_stack(driver->head);
 	free(driver->line);
 	free(driver);
-}
-
-/**
- * push_usage_err - prints push usage error msg
- * @line_number: line number
- *
- * Return: nothing
- */
-void push_usage_err(unsigned int line_number)
-{
-	fprintf(stderr, "L%d: usage: push integer\n", line_number);
-	exit(EXIT_FAILURE);
 }
 
 /**
@@ -99,4 +88,20 @@ void math_op(stack_t **stack, unsigned int op)
 	*stack = (*stack)->next;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
+}
+
+/**
+ * getsize - returns size of stack
+ * @size: pointer to save the size in
+ *
+ * Return: size of stack
+ */
+size_t getsize(size_t *size)
+{
+	stack_t *tmp = driver->head;
+
+	for (; tmp && tmp->n; tmp = tmp->next)
+		(*size)++;
+
+	return (*size);
 }

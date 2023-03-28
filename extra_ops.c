@@ -57,11 +57,8 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	string = malloc((sizeof(char) * size) + 1);
 	if (string == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free_driver();
-		exit(EXIT_FAILURE);
-	}
+		malloc_error();
+
 	memset(string, 0, size);
 
 	for (; tmp && tmp->n; tmp = tmp->next, i++)

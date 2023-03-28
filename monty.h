@@ -63,6 +63,7 @@ typedef struct instruction_s
  * struct global_var - main variable for interpreting
  * @bc_file: bytecode file pointer
  * @line_number: line number in file
+ * @islifo: flag of wether is stack of queue
  * @head: head of data structure(stack or queue)
  * @arg: argument for "push" opcode
  * @line: line string buffer
@@ -75,6 +76,7 @@ struct global_var
 {
 	FILE *bc_file;
 	unsigned int line_number;
+	int islifo;
 	stack_t *head;
 	char *arg;
 	char *line;
@@ -85,17 +87,21 @@ extern struct global_var *driver;
 
 /* Functions Prototypes */
 
+/* Error functions */
 
-/* util functions */
+void push_error(unsigned int);
+void math_error(const char *, unsigned int);
+void div_error(unsigned int);
+void malloc_error(void);
+
+
+/* Util functions */
 
 FILE *check_usage(FILE **, int, char **);
 opfunc get_opfunc(char *);
 void driver_init(FILE *);
 void free_driver(void);
-void push_usage_err(unsigned int);
 void math_op(stack_t **, unsigned int);
-void math_err(const char *, unsigned int);
-void div_err(unsigned int);
 size_t getsize(size_t *);
 
 
@@ -121,10 +127,18 @@ void _div(stack_t **, unsigned int);
 void mul(stack_t **, unsigned int);
 void mod(stack_t **, unsigned int);
 
+
 /* stack functions */
 
 stack_t *push(stack_t **, int);
 void free_stack(stack_t *);
+
+
+/* switch functions */
+
+void lifo(stack_t **, unsigned int);
+void queue(stack_t **, unsigned int);
+stack_t *enqueue(stack_t **, int);
 
 
 #endif /* __MONTY_H__ */

@@ -13,11 +13,7 @@ stack_t *push(stack_t **top, int el)
 
 	node = malloc(sizeof(stack_t));
 	if (!node)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free_driver();
-		exit(EXIT_FAILURE);
-	}
+		malloc_error();
 
 	node->n = el;
 	node->prev = NULL;

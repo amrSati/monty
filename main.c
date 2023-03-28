@@ -44,6 +44,7 @@ int main(int argc, char **argv)
 		read = getline(&(driver->line), &line_size, bc_file);
 	}
 
+
 	free_driver();
 	exit(EXIT_SUCCESS);
 }

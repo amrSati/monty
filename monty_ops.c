@@ -12,17 +12,20 @@ void _push(stack_t **stack, unsigned int line_number)
 	int n, i = 0;
 
 	if (!driver->arg)
-		push_usage_err(line_number);
+		push_error(line_number);
 
 	if (driver->arg[0] == '-')
 		i++;
 
 	for (; driver->arg[i]; i++)
 		if (!isdigit(driver->arg[i]))
-			push_usage_err(line_number);
+			push_error(line_number);
 
 	n = atoi(driver->arg);
-	push(stack, n);
+	if (driver->islifo)
+		push(stack, n);
+	else
+		enqueue(stack, n);
 }
 
 /**
